@@ -37,7 +37,7 @@ public class Conductor : MonoBehaviour
         musicSource.Play();
 
         beatIsUsed = false;
-}
+    }
 
     void Update()
     {
