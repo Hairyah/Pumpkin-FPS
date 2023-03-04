@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class CharacterController : MonoBehaviour
+public class playerController : MonoBehaviour
 {
     [SerializeField] GameObject spawnerPrefab;
     //private GameObject spawner;

@@ -103,7 +103,7 @@ public class LevelManager : MonoBehaviour
         * /.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\ */
         Destroy(spawner);
         Cursor.lockState = CursorLockMode.None;
-        player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<playerController>().enabled = false;
     }
 
     private void GuiSelect()
