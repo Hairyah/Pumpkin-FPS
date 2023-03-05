@@ -70,7 +70,7 @@ public class Gun : MonoBehaviour
         nbActualBullet--;
         affBullet.text = nbActualBullet.ToString()+"/8 bullets";
 
-        Quaternion recul = Quaternion.AngleAxis(-intensity*6, Vector3.right);
+        Quaternion recul = Quaternion.AngleAxis(-intensity*2, Vector3.right);
         cameraTransform.localRotation = Quaternion.Lerp(cameraTransform.localRotation, recul, Time.deltaTime * smooth);
 
         Vector3 eulerRotation = cameraTransform.localRotation.eulerAngles;
