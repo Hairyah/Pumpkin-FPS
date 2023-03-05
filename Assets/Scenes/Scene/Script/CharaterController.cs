@@ -39,10 +39,6 @@ public class CharaterController : MonoBehaviour
         return float.MaxValue;
     }
 
-    public void ResetDash()
-    {
-        lastDash = 0f;
-    }
 
     private void Start()
     {
