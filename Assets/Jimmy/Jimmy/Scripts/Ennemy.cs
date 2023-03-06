@@ -7,8 +7,8 @@ public class Ennemy : Object
     List<GameObject> ennemyList;
 
     public string type;
-    public int health, moveSpeed;
-    public float rangeToAttack;
+    public int health;
+    public float moveSpeed, rangeToAttack;
     public int delayToAttack;
 
     public Ennemy(string type)
@@ -18,22 +18,22 @@ public class Ennemy : Object
         switch (type)
         {
             case "Ghost":
-                this.health = 75;
-                this.moveSpeed = 30;
+                this.health = 100;
+                this.moveSpeed = 3.5f;
                 this.rangeToAttack = 10;
                 this.delayToAttack = 2;
                 break;
 
             case "Witch":
                 this.health = 100;
-                this.moveSpeed = 25;
+                this.moveSpeed = 3.5f;
                 this.rangeToAttack = 15;
                 this.delayToAttack = 3;
                 break;
 
             case "Caretaker":
                 this.health = 125;
-                this.moveSpeed = 20;
+                this.moveSpeed = 3.5f;
                 this.rangeToAttack = 5;
                 this.delayToAttack = 1;
                 break;
@@ -48,8 +48,8 @@ public class Ennemy : Object
         Vector3 spawnerPosition = spawner.transform.position;
 
         //Get two random float within a range of radius
-        double minRadius = 10;
-        double maxRadius = 20;
+        double minRadius = 1;
+        double maxRadius = 5;
         double range = maxRadius - minRadius;
         float randX = (float)((rnd.NextDouble() * range) + minRadius);
         float randz = (float)((rnd.NextDouble() * range) + minRadius);

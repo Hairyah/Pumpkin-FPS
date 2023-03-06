@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Conductor : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Conductor : MonoBehaviour
     //Se qui joue la musique
     public AudioSource musicSource;
 
+    public Text affBeat;
+
     void Start()
     {
         musicSource = GetComponent<AudioSource>();
@@ -46,6 +49,14 @@ public class Conductor : MonoBehaviour
 
         //Determine le nombre de beat depuis le début de la chanson
         songPositionInBeats = songPosition / secPerBeat;
+        if (TestRythme())
+        {
+            affBeat.enabled = true;
+        }
+        else
+        {
+            affBeat.enabled = false;
+        }
 
 
         /*if (!beatIsUsed && Input.GetKeyDown("space") && (songPositionInBeats >= Mathf.Floor(songPositionInBeats) + 0.40f && songPositionInBeats <= Mathf.Floor(songPositionInBeats) + 0.60f))

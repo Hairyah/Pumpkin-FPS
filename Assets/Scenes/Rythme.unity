@@ -1088,9 +1088,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2710572280710907953, guid: 13af5c88111e4d848851fc6f003d30df, type: 3}
+      propertyPath: shotgun
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2710572280710907953, guid: 13af5c88111e4d848851fc6f003d30df, type: 3}
       propertyPath: affBullet
       value: 
       objectReference: {fileID: 1985133137}
+    - target: {fileID: 2710572280710907953, guid: 13af5c88111e4d848851fc6f003d30df, type: 3}
+      propertyPath: inaccuracyDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13af5c88111e4d848851fc6f003d30df, type: 3}
 --- !u!1001 &4871717914506651111

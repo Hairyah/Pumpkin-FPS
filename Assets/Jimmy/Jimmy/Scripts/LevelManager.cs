@@ -35,9 +35,9 @@ public class LevelManager : MonoBehaviour
 
         switch (sceneName)
         {
-            case "Level_1":
-                playerPosition = new Vector3(0, 0, 0);
-                spawnerPosition = new Vector3(0, 0, 0);
+            case "Antoine fps":
+                playerPosition = new Vector3(-53, 0, 21);
+                spawnerPosition = new Vector3(-14.5f, 0, 22.5f);
                 break;
 
             case "Level_2":
@@ -103,7 +103,7 @@ public class LevelManager : MonoBehaviour
         * /.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\ */
         Destroy(spawner);
         Cursor.lockState = CursorLockMode.None;
-        player.GetComponent<playerController>().enabled = false;
+        player.GetComponent<CharacterController>().enabled = false;
     }
 
     private void GuiSelect()

@@ -20,10 +20,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // Bloquer le curseur de la souris en jeu
-        Cursor.lockState = CursorLockMode.Locked;
         canDash = true;
         speedMultiplier = 1f;
+        
     }
 
     private void Update()

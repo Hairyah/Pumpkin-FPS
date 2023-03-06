@@ -30,9 +30,12 @@ public class Gun : MonoBehaviour
     public int bulletPerShot = 6;
     public float inaccuracyDistance = 5f;
 
+    SpawnerManager spawnerManager;
+
     private void Start()
     {
-
+        affBullet = GameObject.Find("Bullets").GetComponent<Text>();
+        spawnerManager = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>();
         origin_rotation = transform.localRotation;
     }
 
@@ -83,7 +86,7 @@ public class Gun : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(fpsCam.transform.position, GetShootingDirection(), out hit, range/4))
                 {
-                    Debug.Log(hit.transform.name);
+                    //Debug.Log(hit.transform.name);
 
                     Target target = hit.transform.GetComponent<Target>();
                     if (target != null)
@@ -105,18 +108,33 @@ public class Gun : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
             {
-                Debug.Log(hit.transform.name);
+                //Debug.Log(hit.transform.name);
 
-                Target target = hit.transform.GetComponent<Target>();
+                /*Target target = hit.transform.GetComponent<Target>();
                 if (target != null)
                 {
                     target.TakeDamage(damage);
+                }*/
+
+
+                if (hit.transform.gameObject != null)
+                {
+                    if (hit.transform.gameObject.tag == "Ennemy")
+                    {
+                        int index = spawnerManager.GetIndex(hit.transform.gameObject.name);
+                        spawnerManager.ennemyListByClass[index].health -= 50;
+                        if (spawnerManager.ennemyListByClass[index].health <= 0)
+                        {
+                            Debug.Log("ENTER");
+                            Destroy(hit.transform.gameObject);
+                        }
+                    }
                 }
 
-                if (hit.rigidbody != null)
+                /*if (hit.rigidbody != null)
                 {
                     hit.rigidbody.AddForce(-hit.normal * impactForce);
-                }
+                }*/
 
                 Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             }
@@ -139,9 +157,9 @@ public class Gun : MonoBehaviour
     {
         Vector3 targetPos = fpsCam.transform.position + fpsCam.transform.forward;
         targetPos = new Vector3(
-            targetPos.x + Random.Range(0, inaccuracyDistance),
-            targetPos.y + Random.Range(0, inaccuracyDistance),
-            targetPos.x + Random.Range(0, inaccuracyDistance)
+            targetPos.x + Random.Range(-inaccuracyDistance, inaccuracyDistance),
+            targetPos.y + Random.Range(-inaccuracyDistance, inaccuracyDistance),
+            targetPos.x + Random.Range(-inaccuracyDistance, inaccuracyDistance)
             );
 
         Vector3 direction = targetPos - fpsCam.transform.position;

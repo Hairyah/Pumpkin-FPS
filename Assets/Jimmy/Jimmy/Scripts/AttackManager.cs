@@ -15,7 +15,7 @@ public class AttackManager : MonoBehaviour
         transform.LookAt(player.transform.position);
         direction = new Vector3(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y, player.transform.position.z - transform.position.z);
         target = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
-        moveSpeed = 0.05f;
+        moveSpeed = 0.15f;
     }
 
     void Update()
@@ -28,10 +28,9 @@ public class AttackManager : MonoBehaviour
             Destroy(transform.gameObject);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Level" || collision.gameObject.tag == "Player")
+        if (other.gameObject.tag != "Projectile" && other.gameObject.tag != "Ennemy")
         {
             Destroy(transform.gameObject);
         }

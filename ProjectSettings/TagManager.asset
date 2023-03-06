@@ -7,6 +7,10 @@ TagManager:
   - Ennemy
   - Level
   - UiButton
+  - Item
+  - FxTemporaire
+  - Spawner
+  - Projectile
   layers:
   - Default
   - TransparentFX

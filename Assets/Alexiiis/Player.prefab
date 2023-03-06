@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 2710572279969042413}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5253,7 +5253,7 @@ MonoBehaviour:
   m_PivotOffset: {x: 1, y: 1, z: 0}
   m_AmplitudeGain: 2
   m_FrequencyGain: 1
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
+  mNoiseOffsets: {x: -611.05774, y: -959.40466, z: -291.7124}
 --- !u!1 &2710572281320366619
 GameObject:
   m_ObjectHideFlags: 0

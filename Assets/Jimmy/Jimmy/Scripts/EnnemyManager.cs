@@ -33,6 +33,7 @@ public class EnnemyManager : MonoBehaviour
         if (isInitialize)
         {
             navMeshAgent.SetDestination(target.transform.position);
+            navMeshAgent.speed = spawner.GetComponent<SpawnerManager>().ennemyListByClass[GetIndex(transform.gameObject.name)].moveSpeed;
             distanceFromTarget = GetDistanceFromTarget(transform.position, target.transform.position);
             if (distanceFromTarget <= ennemyReferenceInClassList.rangeToAttack && !hasAttack)
             {
@@ -45,8 +46,8 @@ public class EnnemyManager : MonoBehaviour
     {
         hasAttack = true;
         Vector3 direction = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
-        Vector3 positionToInstance = Vector3.MoveTowards(new Vector3 (transform.position.x, 0, transform.position.z), direction * int.MaxValue, 0.1f);
-        positionToInstance.y = 1f;
+        Vector3 positionToInstance = Vector3.MoveTowards(transform.position, direction * int.MaxValue, 0.2f);
+        positionToInstance.y += 1;
         //Vector3 positionToInstance = transform.position + Vector3.forward;
         switch (ennemyReferenceInClassList.type)
         {
@@ -67,18 +68,23 @@ public class EnnemyManager : MonoBehaviour
         hasAttack = false;
     }
 
+    public void Initialize(Ennemy ennemy)
+    {
+        //ennemyType = ennemy;
+    }
+
     IEnumerator Init()
     {
         yield return new WaitForSeconds(0.1f);
-        ennemyReferenceInClassList = spawner.ennemyListByClass[GetIndex()];
+        ennemyReferenceInClassList = spawner.ennemyListByClass[GetIndex(transform.gameObject.name)];
         target = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(target);
+        //Debug.Log(target);
         isInitialize = true;
     }
 
-    private int GetIndex()
+    private int GetIndex(string name)
     {
-        int index = Convert.ToInt32(transform.gameObject.name);
+        int index = Convert.ToInt32(name);
         return index;
     }
 

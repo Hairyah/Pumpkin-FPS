@@ -46,8 +46,8 @@ public class CharaterController : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         speedMultiplier = 1f;
+        affPdv = GameObject.Find("PV").GetComponent<Text>();
     }
 
     private void Update()
@@ -90,7 +90,7 @@ public class CharaterController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject.tag);
+        //Debug.Log(other.gameObject.tag);
         if (other.gameObject.tag == "Item") 
         {
             Destroy(other.gameObject);
@@ -100,6 +100,14 @@ public class CharaterController : MonoBehaviour
             if (pdvJoueur> 100){
                 pdvJoueur = 100;
             }
+            affPdv.text = pdvJoueur.ToString() + " HP";
+        }
+
+        if (other.gameObject.tag == "Projectile")
+        {
+            //FindObjectOfType<AudioManager>().Play("Damage");
+
+            pdvJoueur -= 25;
             affPdv.text = pdvJoueur.ToString() + " HP";
         }
     }
