@@ -13,9 +13,11 @@ public class EnnemyManager : MonoBehaviour
     float distanceFromTarget;
     bool hasAttack;
 
-    public string type;
-    public int health, delayToAttack;
-    public float moveSpeed, rangeToAttack;
+    [SerializeField] EnnemyData ennemyData;
+
+    //public string type;
+    //public int health, delayToAttack;
+    //public float moveSpeed, rangeToAttack;
 
     [SerializeField] GameObject ghostAttackPrefab;
     [SerializeField] GameObject witchAttackPrefab;
@@ -37,12 +39,9 @@ public class EnnemyManager : MonoBehaviour
         if (isInitialize)
         {
             navMeshAgent.SetDestination(target.transform.position);
-<<<<<<< Updated upstream
-=======
-            navMeshAgent.speed = moveSpeed;
->>>>>>> Stashed changes
+            navMeshAgent.speed = ennemyData.moveSpeed;
             distanceFromTarget = GetDistanceFromTarget(transform.position, target.transform.position);
-            if (distanceFromTarget <= rangeToAttack && !hasAttack)
+            if (distanceFromTarget <= ennemyData.rangeToAttack && !hasAttack)
             {
                 StartCoroutine(Attack());
             }
@@ -53,16 +52,9 @@ public class EnnemyManager : MonoBehaviour
     {
         hasAttack = true;
         Vector3 direction = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
-<<<<<<< Updated upstream
-        Vector3 positionToInstance = Vector3.MoveTowards(new Vector3 (transform.position.x, 0, transform.position.z), direction * int.MaxValue, 0.1f);
-        positionToInstance.y = 1f;
-        //Vector3 positionToInstance = transform.position + Vector3.forward;
-        switch (ennemyReferenceInClassList.type)
-=======
         Vector3 positionToInstance = Vector3.MoveTowards(transform.position, direction * int.MaxValue, 0.2f);
         positionToInstance.y += 1;
-        switch (type)
->>>>>>> Stashed changes
+        switch (ennemyData.type)
         {
             case "Ghost":
                 Instantiate(ghostAttackPrefab, positionToInstance, Quaternion.identity);
@@ -81,28 +73,19 @@ public class EnnemyManager : MonoBehaviour
         hasAttack = false;
     }
 
-<<<<<<< Updated upstream
-    IEnumerator Init()
-    {
-        yield return new WaitForSeconds(0.1f);
-        ennemyReferenceInClassList = spawner.ennemyListByClass[GetIndex()];
-        target = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(target);
-=======
-    public void Initialize(EnnemyData ennemy)
+    /*public void Initialize(EnnemyData ennemy)
     {
         type = ennemy.type;
         health = ennemy.health;
         moveSpeed = ennemy.moveSpeed;
         rangeToAttack = ennemy.rangeToAttack;
         delayToAttack = ennemy.delayToAttack;
-    }
+    }*/
 
     IEnumerator Init()
     {
         yield return new WaitForSeconds(0.1f);
         target = GameObject.FindGameObjectWithTag("Player");
->>>>>>> Stashed changes
         isInitialize = true;
     }
 

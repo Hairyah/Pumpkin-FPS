@@ -619,7 +619,7 @@ GameObject:
   - component: {fileID: 3065150044161530170}
   m_Layer: 0
   m_Name: woman-witch-halloween
-  m_TagString: Untagged
+  m_TagString: Ennemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,6 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
+  ennemyData: {fileID: 11400000, guid: 27142572700507942b6a71996846764a, type: 2}
   ghostAttackPrefab: {fileID: 3204206807977028988, guid: bc227fbe524bbea4893b592f85cf92dd, type: 3}
   witchAttackPrefab: {fileID: 9130105382893264710, guid: 488ce79ab996a364b971ea91b671aabb, type: 3}
   caretakerAttackPrefab: {fileID: 3342699099596591611, guid: 2ac5ee2e636ec6b4689044386926b2f9, type: 3}

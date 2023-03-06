@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< Updated upstream
-=======
 using System;
 using Assets.Scripts;
->>>>>>> Stashed changes
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -16,9 +13,9 @@ public class SpawnerManager : MonoBehaviour
     public List<Ennemy> ennemyListByClass;
     public List<GameObject> ennemyListByGameObject;
 
-    [SerializeField] EnnemyData ghostData;
-    [SerializeField] EnnemyData witchData;
-    [SerializeField] EnnemyData caretakerData;
+    EnnemyData ghostData;
+    EnnemyData witchData;
+    EnnemyData caretakerData;
 
     [SerializeField] int nbrOfEnnemyBySpawn;
     public int nbrOfSpawns;
@@ -29,6 +26,10 @@ public class SpawnerManager : MonoBehaviour
 
     void Awake()
     {
+        ghostData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/GhostData.asset");
+        witchData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/WitchData.asset");
+        caretakerData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/CaretakerData.asset");
+
         ennemyListByClass = new List<Ennemy>();
         ennemyListByGameObject = new List<GameObject>();
         nbrOfWavesSpawned = 0;
@@ -43,44 +44,6 @@ public class SpawnerManager : MonoBehaviour
         }
     }
 
-    private void SpawnInit()
-    {
-        for (int i = 0; i < nbrOfEnnemyBySpawn; ++i)
-        {
-            int randomType = rnd.Next(0, 99);
-            if (randomType < 25)
-            {
-                Ennemy newEnnemyByClass = new Ennemy("Ghost");
-                ennemyListByClass.Add(newEnnemyByClass);
-                GameObject newEnnemyByGameObject = newEnnemyByClass.InstantiateEnnemy(ghostPrefab, transform.gameObject);
-                newEnnemyByGameObject.name = (ennemyListByClass.Count - 1).ToString();
-                newEnnemyByGameObject.transform.GetChild(0).gameObject.name = (ennemyListByClass.Count - 1).ToString();
-                ennemyListByGameObject.Add(newEnnemyByGameObject);
-            }
-            else if (randomType >= 25 && randomType < 50)
-            {
-                Ennemy newEnnemyByClass = new Ennemy("Witch");
-                ennemyListByClass.Add(newEnnemyByClass);
-                GameObject newEnnemyByGameObject = newEnnemyByClass.InstantiateEnnemy(witchPrefab, transform.gameObject);
-                newEnnemyByGameObject.name = (ennemyListByClass.Count - 1).ToString();
-                newEnnemyByGameObject.transform.GetChild(0).gameObject.name = (ennemyListByClass.Count - 1).ToString();
-                ennemyListByGameObject.Add(newEnnemyByGameObject);
-            }
-            else
-            {
-                Ennemy newEnnemyByClass = new Ennemy("Caretaker");
-                ennemyListByClass.Add(newEnnemyByClass);
-                GameObject newEnnemyByGameObject = newEnnemyByClass.InstantiateEnnemy(caretakerPrefab, transform.gameObject);
-                newEnnemyByGameObject.name = (ennemyListByClass.Count - 1).ToString();
-                Debug.Log("nameBefor" + newEnnemyByGameObject.transform.GetChild(0).gameObject.name);
-                newEnnemyByGameObject.transform.GetChild(0).gameObject.name = (ennemyListByClass.Count - 1).ToString();
-                Debug.Log("nameAfter" + newEnnemyByGameObject.transform.GetChild(0).gameObject.name);
-                ennemyListByGameObject.Add(newEnnemyByGameObject);
-            }
-        }
-        ++nbrOfWavesSpawned;
-    }
-
     IEnumerator Spawn()
     {
         canSpawn = false;
@@ -92,36 +55,25 @@ public class SpawnerManager : MonoBehaviour
             {
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(ghostPrefab, transform.gameObject);
                 //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/GhostData.asset"));
-                newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(ghostData);
+                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(ghostData);
             }
             else if (randomType >= 25 && randomType < 50)
             {
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(witchPrefab, transform.gameObject);
                 //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/WitchData.asset"));
-                newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(witchData);
+                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(witchData);
             }
             else
             {
-<<<<<<< Updated upstream
-                Ennemy newEnnemyByClass = new Ennemy("Caretaker");
-                ennemyListByClass.Add(newEnnemyByClass);
-                GameObject newEnnemyByGameObject = newEnnemyByClass.InstantiateEnnemy(caretakerPrefab, transform.gameObject);
-                newEnnemyByGameObject.name = (ennemyListByClass.Count - 1).ToString();
-                newEnnemyByGameObject.transform.GetChild(0).gameObject.name = (ennemyListByClass.Count - 1).ToString();
-                ennemyListByGameObject.Add(newEnnemyByGameObject);
-=======
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(caretakerPrefab, transform.gameObject);
                 //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/CaretakerData.asset"));
-                newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(caretakerData);
->>>>>>> Stashed changes
+                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(caretakerData);
             }
         }
         ++nbrOfWavesSpawned;
         yield return new WaitForSeconds(30);
         canSpawn = true;
     }
-<<<<<<< Updated upstream
-=======
 
     public int GetIndex(string name)
     {
@@ -172,5 +124,4 @@ public class SpawnerManager : MonoBehaviour
             }
         }
     }
->>>>>>> Stashed changes
 }
