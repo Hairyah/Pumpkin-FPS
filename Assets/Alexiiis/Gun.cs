@@ -125,7 +125,6 @@ public class Gun : MonoBehaviour
                         spawnerManager.ennemyListByClass[index].health -= 50;
                         if (spawnerManager.ennemyListByClass[index].health <= 0)
                         {
-                            Debug.Log("ENTER");
                             Destroy(hit.transform.gameObject);
                         }
                     }

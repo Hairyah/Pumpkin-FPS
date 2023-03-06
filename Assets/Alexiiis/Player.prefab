@@ -225,7 +225,7 @@ MonoBehaviour:
   mouseSensitivity: 1
   distanceToJump: 1.05
   jumpForce: 2000
-  pdvJoueur: 10
+  pdvJoueur: 100
   affPdv: {fileID: 0}
 --- !u!1 &2710572280256042597
 GameObject:
