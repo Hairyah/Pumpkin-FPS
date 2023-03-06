@@ -13,6 +13,8 @@ public class EnnemyManager : MonoBehaviour
     float distanceFromTarget;
     bool hasAttack;
 
+
+
     [SerializeField] GameObject ghostAttackPrefab;
     [SerializeField] GameObject witchAttackPrefab;
     [SerializeField] GameObject caretakerAttackPrefab;

@@ -62,8 +62,6 @@ public class CharaterController : MonoBehaviour
             velocity.y = playerRigidbody.velocity.y;
             playerRigidbody.velocity = velocity;
 
-            velocity.y = 0f;
-
             if (Input.GetKeyDown(KeyCode.LeftShift) && lastDash + dashResetTime < Time.time)
             {
                 velocity *= dashMultiplier;
