@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e89aedeeba5c0104198e4b0277802e1e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spawner: {instanceID: 0}
+  - ghostAttackPrefab: {fileID: 3204206807977028988, guid: bc227fbe524bbea4893b592f85cf92dd, type: 3}
+  - witchAttackPrefab: {fileID: 9130105382893264710, guid: 488ce79ab996a364b971ea91b671aabb, type: 3}
+  - caretakerAttackPrefab: {fileID: 3342699099596591611, guid: 2ac5ee2e636ec6b4689044386926b2f9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

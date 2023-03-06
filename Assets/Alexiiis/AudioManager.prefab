@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5894414561637351701
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5894414561637351702}
+  - component: {fileID: 5894414561637351703}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5894414561637351702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894414561637351701}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5894414561637351703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894414561637351701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de6eeaf5a3fcefe4ba6961b10e1aab8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Gun
+    clip: {fileID: 8300000, guid: ec13059cb57df1d439b37334e84cff69, type: 3}
+    volume: 0.88
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Cling
+    clip: {fileID: 8300000, guid: 4efb8f6c5296dc04f84d5a876d2d6fad, type: 3}
+    volume: 0.19
+    pitch: 1.34
+    loop: 0
+    source: {fileID: 0}
+  - name: Reload
+    clip: {fileID: 8300000, guid: 487670843f76d5843a3e3d5635701d98, type: 3}
+    volume: 0.56
+    pitch: 1.01
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: b6cc6dd2dfdfb954a83f5cb1979c4ec2, type: 3}
+    volume: 0.53
+    pitch: 1.01
+    loop: 0
+    source: {fileID: 0}
+  - name: MissTiming
+    clip: {fileID: 8300000, guid: b6cc6dd2dfdfb954a83f5cb1979c4ec2, type: 3}
+    volume: 0.35
+    pitch: 2.85
+    loop: 0
+    source: {fileID: 0}
