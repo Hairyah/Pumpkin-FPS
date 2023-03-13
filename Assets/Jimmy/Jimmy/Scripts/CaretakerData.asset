@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f3a6d0945ba3f41952ba76e4ebe9e6, type: 3}
-  m_Name: WitchData
+  m_Name: CaretakerData
   m_EditorClassIdentifier: 
-  type: Witch
-  health: 100
+  type: Caretaker
+  health: 150
   moveSpeed: 3.5
-  rangeToAttack: 15
-  delayToAttack: 3
+  rangeToAttack: 5
+  delayToAttack: 1

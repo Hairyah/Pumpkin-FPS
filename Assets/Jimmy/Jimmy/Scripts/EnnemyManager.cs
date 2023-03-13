@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using Assets.Scripts;
 
 public class EnnemyManager : MonoBehaviour
 {
     [SerializeField] SpawnerManager spawner;
-    private Ennemy ennemyReferenceInClassList;
     GameObject target;
     NavMeshAgent navMeshAgent;
     float distanceFromTarget;
     bool hasAttack;
 
+    [SerializeField] EnnemyData ennemyData;
 
+    //public string type;
+    //public int health, delayToAttack;
+    //public float moveSpeed, rangeToAttack;
 
     [SerializeField] GameObject ghostAttackPrefab;
     [SerializeField] GameObject witchAttackPrefab;
@@ -35,9 +39,9 @@ public class EnnemyManager : MonoBehaviour
         if (isInitialize)
         {
             navMeshAgent.SetDestination(target.transform.position);
-            navMeshAgent.speed = spawner.GetComponent<SpawnerManager>().ennemyListByClass[GetIndex(transform.gameObject.name)].moveSpeed;
+            navMeshAgent.speed = ennemyData.moveSpeed;
             distanceFromTarget = GetDistanceFromTarget(transform.position, target.transform.position);
-            if (distanceFromTarget <= ennemyReferenceInClassList.rangeToAttack && !hasAttack)
+            if (distanceFromTarget <= ennemyData.rangeToAttack && !hasAttack)
             {
                 StartCoroutine(Attack());
             }
@@ -50,8 +54,7 @@ public class EnnemyManager : MonoBehaviour
         Vector3 direction = new Vector3(target.transform.position.x - transform.position.x, 0, target.transform.position.z - transform.position.z);
         Vector3 positionToInstance = Vector3.MoveTowards(transform.position, direction * int.MaxValue, 0.2f);
         positionToInstance.y += 1;
-        //Vector3 positionToInstance = transform.position + Vector3.forward;
-        switch (ennemyReferenceInClassList.type)
+        switch (ennemyData.type)
         {
             case "Ghost":
                 Instantiate(ghostAttackPrefab, positionToInstance, Quaternion.identity);
@@ -70,23 +73,25 @@ public class EnnemyManager : MonoBehaviour
         hasAttack = false;
     }
 
-    public void Initialize(Ennemy ennemy)
+    /*public void Initialize(EnnemyData ennemy)
     {
-        //ennemyType = ennemy;
-    }
+        type = ennemy.type;
+        health = ennemy.health;
+        moveSpeed = ennemy.moveSpeed;
+        rangeToAttack = ennemy.rangeToAttack;
+        delayToAttack = ennemy.delayToAttack;
+    }*/
 
     IEnumerator Init()
     {
         yield return new WaitForSeconds(0.1f);
-        ennemyReferenceInClassList = spawner.ennemyListByClass[GetIndex(transform.gameObject.name)];
         target = GameObject.FindGameObjectWithTag("Player");
-        //Debug.Log(target);
         isInitialize = true;
     }
 
-    private int GetIndex(string name)
+    private int GetIndex()
     {
-        int index = Convert.ToInt32(name);
+        int index = Convert.ToInt32(transform.gameObject.name);
         return index;
     }
 

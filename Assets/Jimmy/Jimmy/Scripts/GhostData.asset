@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4f3a6d0945ba3f41952ba76e4ebe9e6, type: 3}
-  m_Name: WitchData
+  m_Name: GhostData
   m_EditorClassIdentifier: 
-  type: Witch
+  type: Ghost
   health: 100
   moveSpeed: 3.5
-  rangeToAttack: 15
-  delayToAttack: 3
+  rangeToAttack: 10
+  delayToAttack: 2
