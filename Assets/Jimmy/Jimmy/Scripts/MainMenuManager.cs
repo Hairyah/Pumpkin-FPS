@@ -49,7 +49,7 @@ public class MainMenuManager : MonoBehaviour
                 {
                     if (go.gameObject.name == "NewRun")
                     {
-                        SceneManager.LoadScene("Level_1");
+                        SceneManager.LoadScene("Cimetiere");
                     }
                     else if (go.gameObject.name == "SelectLevel")
                     {
@@ -62,15 +62,13 @@ public class MainMenuManager : MonoBehaviour
                     {
                         Application.Quit();
                     }
-                    else if (go.gameObject.name == "Level_1")
+                    else if (go.gameObject.name == "Cimetiere")
                     {
-                        //SceneManager.LoadScene("Level_1");
-                        SceneManager.LoadScene("Jimmy");
+                        SceneManager.LoadScene("Cimetiere");
                     }
-                    else if (go.gameObject.name == "Level_2")
+                    else if (go.gameObject.name == "Cryptes")
                     {
-                        //SceneManager.LoadScene("Level_2");
-                        SceneManager.LoadScene("Jimmy");
+                        SceneManager.LoadScene("Cryptes");
                     }
                     else if (go.gameObject.name == "Return")
                     {

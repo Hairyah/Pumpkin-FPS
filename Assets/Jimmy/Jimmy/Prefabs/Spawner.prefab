@@ -47,8 +47,5 @@ MonoBehaviour:
   ghostPrefab: {fileID: 2976610219438379066, guid: 5427496dc43752d44916ff576bef363b, type: 3}
   witchPrefab: {fileID: 4038685874682189719, guid: c23f25962d63d0742b95fe5d2122caa1, type: 3}
   caretakerPrefab: {fileID: 447091343886021197, guid: 138bea4fcc575f24bb71a706968042c1, type: 3}
-  ennemyListByClass: []
-  ennemyListByGameObject: []
   nbrOfEnnemyBySpawn: 3
-  nbrOfSpawns: 0
-  nbrOfWavesSpawned: 0
+  delayToSpawn: 10

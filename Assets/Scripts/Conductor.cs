@@ -25,7 +25,7 @@ public class Conductor : MonoBehaviour
     //Se qui joue la musique
     public AudioSource musicSource;
 
-    public Text affBeat;
+    public RawImage affBeat;
 
     void Start()
     {
@@ -51,11 +51,11 @@ public class Conductor : MonoBehaviour
         songPositionInBeats = songPosition / secPerBeat;
         if (TestRythme())
         {
-            affBeat.enabled = true;
+            affBeat.color = new Color32(255, 255, 255, 255);
         }
         else
         {
-            affBeat.enabled = false;
+            affBeat.color = new Color32(255, 255, 255, 50);
         }
 
 

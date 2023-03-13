@@ -36,6 +36,8 @@ public class CharaterController : MonoBehaviour
     public float pdvJoueur = 100f;
     public Text affPdv;
 
+    LevelManager levelManager;
+
     private float GetHeight()
     {
         RaycastHit hit;
@@ -46,6 +48,7 @@ public class CharaterController : MonoBehaviour
 
     private void Start()
     {
+        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         speedMultiplier = 1f;
         affPdv = GameObject.Find("PV").GetComponent<Text>();
     }
@@ -107,6 +110,10 @@ public class CharaterController : MonoBehaviour
 
             pdvJoueur -= 25;
             affPdv.text = pdvJoueur.ToString() + " HP";
+            if (pdvJoueur <= 0)
+            {
+                levelManager.hasLose = true;
+            }
         }
     }
 }

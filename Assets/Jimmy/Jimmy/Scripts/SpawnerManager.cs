@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Assets.Scripts;
+using UnityEngine.SceneManagement;
 
 public class SpawnerManager : MonoBehaviour
 {
@@ -10,29 +11,15 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] GameObject witchPrefab;
     [SerializeField] GameObject caretakerPrefab;
 
-    public List<Ennemy> ennemyListByClass;
-    public List<GameObject> ennemyListByGameObject;
-
-    EnnemyData ghostData;
-    EnnemyData witchData;
-    EnnemyData caretakerData;
-
     [SerializeField] int nbrOfEnnemyBySpawn;
-    public int nbrOfSpawns;
-    public int nbrOfWavesSpawned;
+    [SerializeField] int delayToSpawn;
+
     bool canSpawn;
 
     System.Random rnd = new System.Random();
 
     void Awake()
     {
-        ghostData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/GhostData.asset");
-        witchData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/WitchData.asset");
-        caretakerData = Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/CaretakerData.asset");
-
-        ennemyListByClass = new List<Ennemy>();
-        ennemyListByGameObject = new List<GameObject>();
-        nbrOfWavesSpawned = 0;
         canSpawn = true;
     }
 
@@ -49,36 +36,22 @@ public class SpawnerManager : MonoBehaviour
         canSpawn = false;
         for (int i = 0; i < nbrOfEnnemyBySpawn; ++i)
         {
-            //Debug.Log(ghostData.health);
             int randomType = rnd.Next(0, 99);
             if (randomType < 25)
             {
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(ghostPrefab, transform.gameObject);
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/GhostData.asset"));
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(ghostData);
             }
             else if (randomType >= 25 && randomType < 50)
             {
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(witchPrefab, transform.gameObject);
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/WitchData.asset"));
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(witchData);
             }
             else
             {
                 GameObject newEnnemyByGameObject = InstantiateEnnemy(caretakerPrefab, transform.gameObject);
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(Resources.Load<EnnemyData>("Assets/Jimmy/Jimmy/Scripts/CaretakerData.asset"));
-                //newEnnemyByGameObject.GetComponent<EnnemyManager>().Initialize(caretakerData);
             }
         }
-        ++nbrOfWavesSpawned;
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(delayToSpawn);
         canSpawn = true;
-    }
-
-    public int GetIndex(string name)
-    {
-        int index = Convert.ToInt32(name);
-        return index;
     }
 
     public GameObject InstantiateEnnemy(GameObject prefab, GameObject spawner)
@@ -89,8 +62,21 @@ public class SpawnerManager : MonoBehaviour
         Vector3 spawnerPosition = spawner.transform.position;
 
         //Get two random float within a range of radius
-        double minRadius = 1;
-        double maxRadius = 5;
+        double minRadius = 0;
+        double maxRadius = 0;
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "Cryptes":
+                minRadius = 1;
+                maxRadius = 5;
+                break;
+
+            case "Cimetiere":
+                minRadius = 10;
+                maxRadius = 14;
+                break;
+        }
+        
         double range = maxRadius - minRadius;
         float randX = (float)((rnd.NextDouble() * range) + minRadius);
         float randz = (float)((rnd.NextDouble() * range) + minRadius);

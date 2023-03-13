@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Jimmy/Jimmy/MainMenu.unity
+    path: "Assets/Sc\xE8nes Finales/MainMenu.unity"
     guid: bd4e77fa0b68ed248a91933d8a54884d
   - enabled: 1
-    path: Assets/Jimmy/Jimmy/Jimmy.unity
-    guid: 99ee67e64b4ec2042882f570f852e401
+    path: "Assets/Sc\xE8nes Finales/Cimetiere.unity"
+    guid: 7f793ae1ed1e64e479d678ab3aebefce
+  - enabled: 1
+    path: "Assets/Sc\xE8nes Finales/Cryptes.unity"
+    guid: 69fa8841ebebbb844aa8e357d4b36df9
   m_configObjects: {}

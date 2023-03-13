@@ -30,12 +30,15 @@ public class Gun : MonoBehaviour
     public int bulletPerShot = 6;
     public float inaccuracyDistance = 5f;
 
-    SpawnerManager spawnerManager;
+    LevelManager levelManager;
+    public int compteurMort = 15;
+    public Text affCompteur;
 
     private void Start()
     {
         affBullet = GameObject.Find("Bullets").GetComponent<Text>();
-        spawnerManager = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerManager>();
+        affCompteur = GameObject.Find("NbMob").GetComponent<Text>();
+        levelManager = GameObject.Find("GameManager").GetComponent<LevelManager>();
         origin_rotation = transform.localRotation;
     }
 
@@ -121,11 +124,17 @@ public class Gun : MonoBehaviour
                 {
                     if (hit.transform.gameObject.tag == "Ennemy")
                     {
-                        int index = spawnerManager.GetIndex(hit.transform.gameObject.name);
-                        spawnerManager.ennemyListByClass[index].health -= 50;
-                        if (spawnerManager.ennemyListByClass[index].health <= 0)
+                        
+                        hit.transform.parent.gameObject.GetComponent<EnnemyManager>().health -= 50;
+                        if (hit.transform.parent.gameObject.GetComponent<EnnemyManager>().health <= 0)
                         {
-                            Destroy(hit.transform.gameObject);
+                            Destroy(hit.transform.parent.gameObject);
+                            compteurMort--;
+                            affCompteur.text = compteurMort.ToString() + " mobs";
+                            if (compteurMort <= 0)
+                            {
+                                levelManager.hasWin = true;
+                            }
                         }
                     }
                 }

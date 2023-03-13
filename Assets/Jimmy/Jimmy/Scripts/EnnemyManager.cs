@@ -15,18 +15,17 @@ public class EnnemyManager : MonoBehaviour
 
     [SerializeField] EnnemyData ennemyData;
 
-    //public string type;
-    //public int health, delayToAttack;
-    //public float moveSpeed, rangeToAttack;
-
     [SerializeField] GameObject ghostAttackPrefab;
     [SerializeField] GameObject witchAttackPrefab;
     [SerializeField] GameObject caretakerAttackPrefab;
+
+    public int health;
 
     bool isInitialize;
 
     void Start()
     {
+        health = ennemyData.health;
         spawner = transform.parent.gameObject.GetComponent<SpawnerManager>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         isInitialize = false;
@@ -69,18 +68,9 @@ public class EnnemyManager : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(new System.Random().Next(2, 6));
+        yield return new WaitForSeconds(new System.Random().Next(ennemyData.delayToAttack, ennemyData.delayToAttack + 3));
         hasAttack = false;
     }
-
-    /*public void Initialize(EnnemyData ennemy)
-    {
-        type = ennemy.type;
-        health = ennemy.health;
-        moveSpeed = ennemy.moveSpeed;
-        rangeToAttack = ennemy.rangeToAttack;
-        delayToAttack = ennemy.delayToAttack;
-    }*/
 
     IEnumerator Init()
     {

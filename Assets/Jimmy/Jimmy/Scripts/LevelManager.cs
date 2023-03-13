@@ -35,19 +35,14 @@ public class LevelManager : MonoBehaviour
 
         switch (sceneName)
         {
-            case "Antoine fps":
-                playerPosition = new Vector3(-53, 0, 21);
+            case "Cryptes":
+                playerPosition = new Vector3(-53f, 0, 21);
                 spawnerPosition = new Vector3(-14.5f, 0, 22.5f);
                 break;
 
-            case "Level_2":
-                playerPosition = new Vector3(0, 0, 0);
-                spawnerPosition = new Vector3(0, 0, 0);
-                break;
-
-            case "Jimmy":
-                playerPosition = new Vector3(0, 1, -28);
-                spawnerPosition = new Vector3(0, 0, 0);
+            case "Cimetiere":
+                playerPosition = new Vector3(-73f, 8f, -16.5f);
+                spawnerPosition = new Vector3(5f, 0, -15f);
                 break;
         }
 
@@ -103,7 +98,8 @@ public class LevelManager : MonoBehaviour
         * /.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\/.\ */
         Destroy(spawner);
         Cursor.lockState = CursorLockMode.None;
-        player.GetComponent<CharacterController>().enabled = false;
+        player.GetComponent<CharaterController>().enabled = false;
+        player.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Gun>().enabled = false;
     }
 
     private void GuiSelect()
@@ -138,11 +134,11 @@ public class LevelManager : MonoBehaviour
                     }
                     else if (go.gameObject.name == "NextButton")
                     {
-                        if (sceneName == "Level_1")
+                        if (sceneName == "Cimetiere")
                         {
-                            SceneManager.LoadScene("Level_2");
+                            SceneManager.LoadScene("Cryptes");
                         }
-                        else if (sceneName == "Level_2")
+                        else if (sceneName == "Cryptes")
                         {
                             SceneManager.LoadScene("MainMenu");
                         }

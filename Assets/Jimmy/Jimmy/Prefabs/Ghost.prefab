@@ -944,10 +944,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 0}
-  ennemyData: {fileID: 11400000, guid: 1a442062b62a2c648bf03147be543ff3, type: 2}
+  ennemyData: {fileID: 11400000, guid: 9b4eeda582210224285aba7d3e1c7f68, type: 2}
   ghostAttackPrefab: {fileID: 3204206807977028988, guid: bc227fbe524bbea4893b592f85cf92dd, type: 3}
   witchAttackPrefab: {fileID: 9130105382893264710, guid: 488ce79ab996a364b971ea91b671aabb, type: 3}
   caretakerAttackPrefab: {fileID: 3342699099596591611, guid: 2ac5ee2e636ec6b4689044386926b2f9, type: 3}
+  health: 0
 --- !u!1 &3049084624483202870
 GameObject:
   m_ObjectHideFlags: 0
