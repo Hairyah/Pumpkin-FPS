@@ -23,6 +23,11 @@ public class LevelManager : MonoBehaviour
     public bool hasLose;
     public bool hasWin;
 
+    // DITHER EFFECT
+
+    public Material ditherMat;
+    public Material thresholdMat;
+
     void Start()
     {
         hasLose = true;
@@ -79,6 +84,11 @@ public class LevelManager : MonoBehaviour
         hasWin = false;
         Destroy(player);
         player = Instantiate(playerPrefab, playerPosition, Quaternion.identity);
+        Camera.main.gameObject.AddComponent<Dither>();
+        Camera.main.gameObject.GetComponent<Dither>().ditherMat = ditherMat;
+        Camera.main.gameObject.GetComponent<Dither>().thresholdMat = thresholdMat;
+        Camera.main.gameObject.GetComponent<Dither>().cam = Camera.main;
+        Camera.main.gameObject.GetComponent<AudioListener>().enabled = false;
         spawner = Instantiate(spawnerPrefab, spawnerPosition, Quaternion.identity);
         Cursor.lockState = CursorLockMode.Locked;
     }
