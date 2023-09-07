@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dither_Surface
+  m_Name: DitherO_Surface
   m_Shader: {fileID: 4800000, guid: 58bf086058ad09745b88fe79703e3c44, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

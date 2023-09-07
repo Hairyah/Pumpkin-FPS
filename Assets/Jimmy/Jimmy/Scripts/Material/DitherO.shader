@@ -1,4 +1,4 @@
-Shader "Effects/Dither"
+Shader "Effects/DitherO"
 {
     Properties
     {
